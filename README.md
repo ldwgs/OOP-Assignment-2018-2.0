@@ -1,2 +1,2 @@
 # OOP-Assignment-2018-2.0
-test
+Assignment for OOP Java 2018
