@@ -1,5 +1,8 @@
-# OOP-Assignment-2018-2.0
-Assignment for OOP (with revisions to proper requirements), written in Java. 
+# Context
+This is the source code for an assignment for OOP (with revisions to proper requirements), written in Java. 
 
 # TODOS:
-- [ ] Complete ViewBookings view with layout.
+- [ ] Plan out the layout of the ViewBookings view. 
+- [ ] Complete ViewBookings view. 
+- [ ] Add in a Date selector for the booking system. 
+- [ ] Add in the name/ID of the Manager managing each property in the AddBooking view.
