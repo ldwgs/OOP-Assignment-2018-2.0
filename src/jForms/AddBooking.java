@@ -1,11 +1,17 @@
 package jForms;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /*
@@ -19,6 +25,8 @@ import javax.swing.JOptionPane;
  * @author lutfijamaluddin
  */
 public class AddBooking extends javax.swing.JFrame {
+    
+    private String propertyID;
 
     /**
      * Creates new form BookingClerkMenu
@@ -26,6 +34,7 @@ public class AddBooking extends javax.swing.JFrame {
     public AddBooking() throws SQLException {
         initComponents();
         propertyManagerComboBox();
+        initProperty();
     }
     
     public void propertyManagerComboBox() throws SQLException {
@@ -35,7 +44,36 @@ public class AddBooking extends javax.swing.JFrame {
         
         while(rs.next()) {
             customerProperty.addItem("ID : " + rs.getString("ID") + " , " + rs.getString("NAME"));
+            propertyID = rs.getString("ID");
         }
+    }
+    
+    public void initProperty() throws SQLException { // Sets the icons of the jLabels to the property's images based on the combo box.
+            Statement s = DriverManager.getConnection("jdbc:derby://localhost:1527/OOP", "ludwig", "password").createStatement();
+            String sql = "SELECT * FROM Property WHERE ID = " + propertyID;
+            ResultSet rs = s.executeQuery(sql);
+                
+            while(rs.next()) {
+                try {
+                    InputStream propertyImageIS = rs.getBinaryStream("IMAGE");
+                    // Decode the inputstream as BufferedImage
+                    BufferedImage propertyImageBuff;
+                    propertyImageBuff = ImageIO.read(propertyImageIS);
+                    Image propertyImageI = propertyImageBuff;
+                    ImageIcon propertyImageIcon =new ImageIcon(propertyImageI);
+                    propertyImage.setIcon(propertyImageIcon);
+                    
+                    InputStream propertyMapIS = rs.getBinaryStream("MAP");
+                    // Decode the inputstream as BufferedImage
+                    BufferedImage propertyMapBuff;
+                    propertyMapBuff = ImageIO.read(propertyMapIS);
+                    Image propertyMapI = propertyMapBuff;
+                    ImageIcon propertyMapIcon =new ImageIcon(propertyMapI); 
+                    propertyMap.setIcon(propertyMapIcon);
+                } catch (IOException ex) {
+                    Logger.getLogger(AddBooking.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                }
     }
 
     /**
@@ -60,6 +98,10 @@ public class AddBooking extends javax.swing.JFrame {
         customerProperty = new javax.swing.JComboBox<>();
         customerGender = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
+        customerDate = new com.toedter.calendar.JDateChooser();
+        jLabel8 = new javax.swing.JLabel();
+        propertyImage = new javax.swing.JLabel();
+        propertyMap = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,6 +136,12 @@ public class AddBooking extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setText("Date :");
+
+        propertyImage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        propertyMap.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -101,10 +149,6 @@ public class AddBooking extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(18, 18, 18)
-                        .addComponent(customerProperty, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addGap(18, 18, 18)
@@ -124,54 +168,80 @@ public class AddBooking extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
-                        .addComponent(customerName)))
-                .addContainerGap(246, Short.MAX_VALUE))
+                        .addComponent(customerName))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(customerDate, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+                            .addComponent(customerProperty, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(385, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(230, 230, 230))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(propertyImage, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2)
+                                .addGap(105, 105, 105)
+                                .addComponent(propertyMap, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(39, 39, 39))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2)
-                        .addGap(19, 19, 19))))
+                        .addComponent(jLabel1)
+                        .addGap(310, 310, 310))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(23, 23, 23)
                 .addComponent(jLabel1)
-                .addGap(63, 63, 63)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(customerID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(customerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(customerEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(customerContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(customerGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(customerProperty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(customerID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(customerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(customerEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(customerContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(customerGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(customerProperty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(customerDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(28, 28, 28)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(69, 69, 69)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(jButton2)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(propertyImage, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(propertyMap, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
 
         pack();
@@ -183,17 +253,18 @@ public class AddBooking extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Check for if any of the fields are empty. All fields need to be filled.
-        if (customerID.getText().isEmpty() || customerID.getText().isEmpty() || customerEmail.getText().isEmpty() || customerContact.getText().isEmpty()) {
+        if (customerID.getText().isEmpty() || customerID.getText().isEmpty() || customerEmail.getText().isEmpty() || customerContact.getText().isEmpty() || customerDate.getDate().toString().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter all details!");
         } else {
             try {
                 // Below is code to get the text in the respective text boxes.
                 String ID = customerID.getText().trim();
-                String name = customerID.getText().trim();
+                String name = customerName.getText().trim();
                 String gender = customerGender.getSelectedItem().toString();
                 String email = customerEmail.getText().trim();
                 String contactNumber = customerContact.getText().trim();
                 String property = customerProperty.getSelectedItem().toString();
+                String date = customerDate.getDate().toString();
                 
                 // Below is code to insert the values above into the table
                 Statement s = DriverManager.getConnection("jdbc:derby://localhost:1527/OOP", "ludwig", "password").createStatement();
@@ -205,7 +276,8 @@ public class AddBooking extends javax.swing.JFrame {
                         "'" + contactNumber + "'" + "," +
                         "'" + gender + "'" + "," +
                         "'" + " " + "'" + "," + 
-                        "'" + property + "'" + ")";
+                        "'" + property + "'" + "," + 
+                        "'" + date + "'" + ")";
                 
                 s.executeUpdate(sql); // This line of code executes the SQL query and adds in the values to the table      
                 JOptionPane.showMessageDialog(null, "Successfully added new customer: " + name);
@@ -257,6 +329,7 @@ public class AddBooking extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField customerContact;
+    private com.toedter.calendar.JDateChooser customerDate;
     private javax.swing.JTextField customerEmail;
     private javax.swing.JComboBox<String> customerGender;
     private javax.swing.JTextField customerID;
@@ -271,5 +344,8 @@ public class AddBooking extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel propertyImage;
+    private javax.swing.JLabel propertyMap;
     // End of variables declaration//GEN-END:variables
 }
