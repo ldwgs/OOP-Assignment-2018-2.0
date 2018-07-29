@@ -1,3 +1,5 @@
+package Classes;
+
 import jForms.MainMenu;
 
 /**

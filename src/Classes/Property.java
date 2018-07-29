@@ -1,3 +1,5 @@
+package Classes;
+
 public class Property {
 	public int ID;
 	public String name;
