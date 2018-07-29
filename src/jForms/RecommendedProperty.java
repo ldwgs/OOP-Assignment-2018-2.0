@@ -7,6 +7,7 @@ package jForms;
 */
 
 
+import static jForms.PropertyMenu.counter;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -24,10 +25,7 @@ import javax.swing.ImageIcon;
  *
  * @author lutfijamaluddin
  */
-public final class RecommendedProperty extends javax.swing.JFrame {
-    
-    public static int counter = 1; // Allows other classes to use this variable. Mainly used to display the correct Manager contact number
-    
+public final class RecommendedProperty extends javax.swing.JFrame {    
     /**
      * Creates new form PropertyMenu
      * @throws java.io.IOException
@@ -38,25 +36,11 @@ public final class RecommendedProperty extends javax.swing.JFrame {
     }
     
     public void initProperty() throws IOException {
-        
-        if (counter == 1) {// Disables button so that the table doesn't go out of bounds upon click
-            previousButton.setEnabled(false); // Disables button
-        }
-        else if (counter > 1) { // Enables button once the counter is back into valid indexes
-            previousButton.setEnabled(true); // Enables button
-        }
-        if (counter == getTableSize()) {
-            nextButton.setEnabled(false);
-        }
-        if (counter < getTableSize()) {
-            nextButton.setEnabled(true);
-        }
-        
         try {
             Statement s = DriverManager.getConnection("jdbc:derby://localhost:1527/OOP", "ludwig", "password").createStatement();
 //            String sql = "SELECT * FROM Property WHERE ID = " + counter + "AND STATE = " + "'" + PropertyMainMenu.state + "'";
-            String sql = "SELECT * FROM Property WHERE STATE = " + "'" + PropertyMainMenu.state + "'";
-            ResultSet rs = s.executeQuery(sql);
+String sql = "SELECT * FROM Property WHERE STATE = " + "'" + PropertyMainMenu.state + "'"  + "AND ID = " + counter;
+ResultSet rs = s.executeQuery(sql);
 
 while(rs.next()) {
     propertyName.setText(rs.getString("NAME"));
@@ -116,7 +100,6 @@ while(rs.next()) {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         propertyType = new javax.swing.JLabel();
         forRent = new javax.swing.JCheckBox();
@@ -126,8 +109,6 @@ while(rs.next()) {
         propertyPrice = new javax.swing.JLabel();
         propertySize = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        nextButton = new javax.swing.JButton();
-        previousButton = new javax.swing.JButton();
         propertyType1 = new javax.swing.JLabel();
         propertyType2 = new javax.swing.JLabel();
         propertyImage = new javax.swing.JLabel();
@@ -183,20 +164,6 @@ while(rs.next()) {
             }
         });
 
-        nextButton.setText("Next");
-        nextButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nextButtonActionPerformed(evt);
-            }
-        });
-
-        previousButton.setText("Previous");
-        previousButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                previousButtonActionPerformed(evt);
-            }
-        });
-
         propertyType1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         propertyType1.setText("For Rent");
         propertyType1.setToolTipText("");
@@ -227,10 +194,6 @@ while(rs.next()) {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(445, 445, 445)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(previousButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nextButton))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(propertyImage, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(propertyMap, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -238,7 +201,7 @@ while(rs.next()) {
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2)))
-                .addContainerGap(725, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(20, 20, 20)
@@ -257,7 +220,7 @@ while(rs.next()) {
                                 .addComponent(forSale)
                                 .addComponent(forRent)))
                         .addComponent(propertyName, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(798, 1341, Short.MAX_VALUE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,11 +235,7 @@ while(rs.next()) {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nextButton)
-                    .addComponent(previousButton))
-                .addContainerGap(728, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -305,10 +264,8 @@ while(rs.next()) {
                             .addComponent(propertyPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(propertySize, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(1018, Short.MAX_VALUE)))
+                    .addContainerGap(258, Short.MAX_VALUE)))
         );
-
-        jScrollPane1.setViewportView(jPanel1);
 
         jMenu3.setText("File");
 
@@ -336,11 +293,17 @@ while(rs.next()) {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 923, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -355,28 +318,14 @@ while(rs.next()) {
         System.exit(0);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
     
-    private void previousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousButtonActionPerformed
-        counter--;
-        try {
-            initProperty();
-        } catch (IOException ex) {
-            Logger.getLogger(RecommendedProperty.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_previousButtonActionPerformed
-    
-    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
-        counter++;
-        try {
-            initProperty();
-        } catch (IOException ex) {
-            Logger.getLogger(RecommendedProperty.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_nextButtonActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         new ContactManager().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-                
+    
     private void forSaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forSaleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_forSaleActionPerformed
@@ -384,10 +333,6 @@ while(rs.next()) {
     private void forRentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forRentActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_forRentActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -440,9 +385,6 @@ while(rs.next()) {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton nextButton;
-    private javax.swing.JButton previousButton;
     private javax.swing.JLabel propertyArea;
     private javax.swing.JLabel propertyImage;
     private javax.swing.JLabel propertyMap;
