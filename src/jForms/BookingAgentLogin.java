@@ -39,24 +39,24 @@ public class BookingAgentLogin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         textboxID = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        loginButton = new javax.swing.JButton();
         textboxPassword = new javax.swing.JPasswordField();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        menuBar = new javax.swing.JMenu();
+        mainMenu = new javax.swing.JMenuItem();
+        exitMenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Booking Clerk Login");
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
         jLabel1.setText("Booking Clerk Login");
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel2.setText("ID :");
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel3.setText("Password :");
+        jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
 
         textboxID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,33 +64,33 @@ public class BookingAgentLogin extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
-        jButton1.setText("Login");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        loginButton.setText("Login");
+        loginButton.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                loginButtonActionPerformed(evt);
             }
         });
 
-        jMenu1.setText("File");
+        menuBar.setText("File");
 
-        jMenuItem1.setText("Main Menu");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        mainMenu.setText("Main Menu");
+        mainMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                mainMenuActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        menuBar.add(mainMenu);
 
-        jMenuItem2.setText("Exit");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        exitMenu.setText("Exit");
+        exitMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                exitMenuActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        menuBar.add(exitMenu);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuBar);
 
         setJMenuBar(jMenuBar1);
 
@@ -112,7 +112,7 @@ public class BookingAgentLogin extends javax.swing.JFrame {
                 .addGap(0, 73, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(220, 220, 220)
-                .addComponent(jButton1)
+                .addComponent(loginButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -133,7 +133,7 @@ public class BookingAgentLogin extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(textboxPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(48, 48, 48)
-                .addComponent(jButton1)
+                .addComponent(loginButton)
                 .addContainerGap(41, Short.MAX_VALUE))
         );
 
@@ -160,7 +160,7 @@ public class BookingAgentLogin extends javax.swing.JFrame {
         return false;  
     }
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         try {
             if (validClerk()) {
                 new BookingClerkMenu().setVisible(true);
@@ -172,16 +172,16 @@ public class BookingAgentLogin extends javax.swing.JFrame {
         }
         dispose();
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_loginButtonActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void mainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuActionPerformed
         new MainMenu().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_mainMenuActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void exitMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_exitMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,14 +219,14 @@ public class BookingAgentLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JMenuItem exitMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JButton loginButton;
+    private javax.swing.JMenuItem mainMenu;
+    private javax.swing.JMenu menuBar;
     private javax.swing.JTextField textboxID;
     private javax.swing.JPasswordField textboxPassword;
     // End of variables declaration//GEN-END:variables

@@ -43,13 +43,13 @@ public class PropertyMainMenu extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
-        jButton1 = new javax.swing.JButton();
+        findPropertyButton = new javax.swing.JButton();
         propertyState = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        menuBar = new javax.swing.JMenu();
+        mainMenu = new javax.swing.JMenuItem();
+        exitMenu = new javax.swing.JMenuItem();
 
         jMenuItem6.setText("jMenuItem6");
 
@@ -60,34 +60,34 @@ public class PropertyMainMenu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Property Menu");
 
-        jButton1.setText("Find Property");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        findPropertyButton.setText("Find Property");
+        findPropertyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                findPropertyButtonActionPerformed(evt);
             }
         });
 
         jLabel1.setText("State :");
 
-        jMenu3.setText("File");
+        menuBar.setText("File");
 
-        jMenuItem1.setText("Main Menu");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        mainMenu.setText("Main Menu");
+        mainMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                mainMenuActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem1);
+        menuBar.add(mainMenu);
 
-        jMenuItem2.setText("Exit");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        exitMenu.setText("Exit");
+        exitMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                exitMenuActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem2);
+        menuBar.add(exitMenu);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(menuBar);
 
         setJMenuBar(jMenuBar1);
 
@@ -101,7 +101,7 @@ public class PropertyMainMenu extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(propertyState, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
-                .addComponent(jButton1)
+                .addComponent(findPropertyButton)
                 .addGap(65, 65, 65))
         );
         layout.setVerticalGroup(
@@ -109,7 +109,7 @@ public class PropertyMainMenu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(findPropertyButton)
                     .addComponent(propertyState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addContainerGap(25, Short.MAX_VALUE))
@@ -118,7 +118,7 @@ public class PropertyMainMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void findPropertyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findPropertyButtonActionPerformed
         state = propertyState.getSelectedItem().toString();
         
         try {
@@ -127,16 +127,16 @@ public class PropertyMainMenu extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(PropertyMainMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_findPropertyButtonActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void mainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuActionPerformed
         new MainMenu().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_mainMenuActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void exitMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_exitMenuActionPerformed
     
     public void propertyStateComboBox() throws SQLException {
         Statement s = DriverManager.getConnection("jdbc:derby://localhost:1527/OOP", "ludwig", "password").createStatement();
@@ -189,15 +189,15 @@ public class PropertyMainMenu extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JMenuItem exitMenu;
+    private javax.swing.JButton findPropertyButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem mainMenu;
+    private javax.swing.JMenu menuBar;
     private javax.swing.JComboBox<String> propertyState;
     // End of variables declaration//GEN-END:variables
 }

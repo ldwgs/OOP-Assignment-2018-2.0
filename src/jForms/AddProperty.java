@@ -90,7 +90,7 @@ public final class AddProperty extends javax.swing.JFrame {
         propertyID = new javax.swing.JTextField();
         propertyName = new javax.swing.JTextField();
         propertyPrice = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        addPropertyButton = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -106,17 +106,17 @@ public final class AddProperty extends javax.swing.JFrame {
         propertySquare = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         propertyManager = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
+        uploadImageButton = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         propertyImage = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        uploadLocationButton = new javax.swing.JButton();
         propertyMap = new javax.swing.JLabel();
         propertyState = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        menuBar = new javax.swing.JMenu();
+        mainMenu = new javax.swing.JMenuItem();
+        exitMenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add Property");
@@ -147,11 +147,11 @@ public final class AddProperty extends javax.swing.JFrame {
 
         propertyPrice.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
 
-        jButton1.setText("Add Property");
-        jButton1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        addPropertyButton.setText("Add Property");
+        addPropertyButton.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        addPropertyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                addPropertyButtonActionPerformed(evt);
             }
         });
 
@@ -188,10 +188,10 @@ public final class AddProperty extends javax.swing.JFrame {
         jLabel13.setText("Monthly Rental :");
         jLabel13.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
 
-        jButton2.setText("Upload Image");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        uploadImageButton.setText("Upload Image");
+        uploadImageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                uploadImageButtonActionPerformed(evt);
             }
         });
 
@@ -203,10 +203,10 @@ public final class AddProperty extends javax.swing.JFrame {
 
         propertyImage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jButton3.setText("Upload Location");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        uploadLocationButton.setText("Upload Location");
+        uploadLocationButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                uploadLocationButtonActionPerformed(evt);
             }
         });
 
@@ -225,7 +225,7 @@ public final class AddProperty extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton3)
+                    .addComponent(uploadLocationButton)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel16)
@@ -252,12 +252,12 @@ public final class AddProperty extends javax.swing.JFrame {
                         .addComponent(jLabel15)
                         .addGap(18, 18, 18)
                         .addComponent(propertyImage, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(uploadImageButton, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(323, 323, 323))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(addPropertyButton, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel5)
                             .addGap(18, 18, 18)
@@ -308,7 +308,7 @@ public final class AddProperty extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(addPropertyButton)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -363,38 +363,38 @@ public final class AddProperty extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(propertyImage, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton2))
+                                .addComponent(uploadImageButton))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel16)
                                     .addComponent(propertyMap, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel15))
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton3)))
+                                .addComponent(uploadLocationButton)))
                         .addGap(76, 76, 76))))
         );
 
         jScrollPane1.setViewportView(jPanel1);
 
-        jMenu1.setText("File");
+        menuBar.setText("File");
 
-        jMenuItem1.setText("Main Menu");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        mainMenu.setText("Main Menu");
+        mainMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                mainMenuActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        menuBar.add(mainMenu);
 
-        jMenuItem2.setText("Exit");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        exitMenu.setText("Exit");
+        exitMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                exitMenuActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        menuBar.add(exitMenu);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuBar);
 
         setJMenuBar(jMenuBar1);
 
@@ -412,7 +412,7 @@ public final class AddProperty extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void addPropertyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPropertyButtonActionPerformed
         // Check for if any of the fields are empty. All fields need to be filled.
         if (propertyID.getText().isEmpty() || propertyName.getText().isEmpty() || propertyRentPrice.getText().isEmpty()
                 || propertyAddress.getText().isEmpty() || /*"NULL".equals(propertyType.getSelectedItem().toString()) ||*/ propertyPrice.getText().isEmpty()
@@ -510,22 +510,22 @@ JOptionPane.showMessageDialog(null, "Successfully added new property: " + name);
                 Logger.getLogger(AddManager.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_addPropertyButtonActionPerformed
     
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void mainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuActionPerformed
         new MainMenu().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_mainMenuActionPerformed
     
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void exitMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_exitMenuActionPerformed
     
     private void propertyTypeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_propertyTypeFocusGained
         
     }//GEN-LAST:event_propertyTypeFocusGained
     
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void uploadImageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadImageButtonActionPerformed
         // This button allows the user to upload an image to the database, it will then show the image on screen
         JFileChooser file = new JFileChooser();
         file.showOpenDialog(null);
@@ -537,9 +537,9 @@ JOptionPane.showMessageDialog(null, "Successfully added new property: " + name);
         }
         propertyImage.setIcon(new ImageIcon(f.toString()));
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_uploadImageButtonActionPerformed
     
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void uploadLocationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadLocationButtonActionPerformed
         // This button allows the user to upload an image to the database, it will then show the image on screen
         JFileChooser file = new JFileChooser();
         file.showOpenDialog(null);
@@ -550,7 +550,7 @@ JOptionPane.showMessageDialog(null, "Successfully added new property: " + name);
             Logger.getLogger(AddProperty.class.getName()).log(Level.SEVERE, null, ex);
         }
         propertyMap.setIcon(new ImageIcon(f.toString()));
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_uploadLocationButtonActionPerformed
 
     private void propertyStateFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_propertyStateFocusGained
         // TODO add your handling code here:
@@ -597,9 +597,8 @@ JOptionPane.showMessageDialog(null, "Successfully added new property: " + name);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton addPropertyButton;
+    private javax.swing.JMenuItem exitMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -615,12 +614,11 @@ JOptionPane.showMessageDialog(null, "Successfully added new property: " + name);
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenuItem mainMenu;
+    private javax.swing.JMenu menuBar;
     private javax.swing.JTextField propertyAddress;
     private javax.swing.JTextField propertyID;
     private javax.swing.JLabel propertyImage;
@@ -635,5 +633,7 @@ JOptionPane.showMessageDialog(null, "Successfully added new property: " + name);
     private javax.swing.JComboBox<String> propertyState;
     private javax.swing.JComboBox<String> propertyType;
     private javax.swing.JCheckBox propertyVacant;
+    private javax.swing.JButton uploadImageButton;
+    private javax.swing.JButton uploadLocationButton;
     // End of variables declaration//GEN-END:variables
 }

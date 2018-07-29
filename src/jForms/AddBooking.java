@@ -69,19 +69,19 @@ public class AddBooking extends javax.swing.JFrame {
         customerName = new javax.swing.JTextField();
         customerEmail = new javax.swing.JTextField();
         customerContact = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        saveButton = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         customerProperty = new javax.swing.JComboBox<>();
         customerGender = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
+        closeButton = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         customerDate = new com.github.lgooddatepicker.components.DateTimePicker();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("New Booking");
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
         jLabel1.setText("New Booking");
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
 
         jLabel2.setText("Name : ");
 
@@ -93,19 +93,19 @@ public class AddBooking extends javax.swing.JFrame {
 
         jLabel6.setText("Gender : ");
 
-        jButton1.setText("Save");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        saveButton.setText("Save");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                saveButtonActionPerformed(evt);
             }
         });
 
         jLabel7.setText("Property : ");
 
-        jButton2.setText("Close");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        closeButton.setText("Close");
+        closeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                closeButtonActionPerformed(evt);
             }
         });
 
@@ -152,9 +152,9 @@ public class AddBooking extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(customerDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(saveButton)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton2))))
+                                .addComponent(closeButton))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(170, 170, 170)
                         .addComponent(jLabel1)))
@@ -195,19 +195,19 @@ public class AddBooking extends javax.swing.JFrame {
                     .addComponent(customerDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(saveButton)
+                    .addComponent(closeButton))
                 .addContainerGap(117, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
         dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_closeButtonActionPerformed
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         // Check for if any of the fields are empty. All fields need to be filled.
         if (customerID.getText().isEmpty() || customerID.getText().isEmpty() || customerEmail.getText().isEmpty() || customerContact.getText().isEmpty() || customerDate.toString().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter all details!");
@@ -241,7 +241,7 @@ public class AddBooking extends javax.swing.JFrame {
                 Logger.getLogger(AddBooking.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_saveButtonActionPerformed
     
     /**
      * @param args the command line arguments
@@ -284,6 +284,7 @@ public class AddBooking extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton closeButton;
     private javax.swing.JTextField customerContact;
     private com.github.lgooddatepicker.components.DateTimePicker customerDate;
     private javax.swing.JTextField customerEmail;
@@ -291,8 +292,6 @@ public class AddBooking extends javax.swing.JFrame {
     private javax.swing.JTextField customerID;
     private javax.swing.JTextField customerName;
     private javax.swing.JComboBox<String> customerProperty;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -301,5 +300,6 @@ public class AddBooking extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JButton saveButton;
     // End of variables declaration//GEN-END:variables
 }

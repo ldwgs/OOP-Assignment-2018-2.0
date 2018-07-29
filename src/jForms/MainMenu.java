@@ -37,16 +37,16 @@ public class MainMenu extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
-        jButton1 = new javax.swing.JButton();
+        viewPropertyButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem13 = new javax.swing.JMenuItem();
+        menuBar = new javax.swing.JMenu();
+        exitMenu = new javax.swing.JMenuItem();
+        managerMenu = new javax.swing.JMenu();
+        managerRegisterMenu = new javax.swing.JMenuItem();
+        managerLoginMenu = new javax.swing.JMenuItem();
+        clerkMenu = new javax.swing.JMenu();
+        clerkRegisterMenu = new javax.swing.JMenuItem();
+        clerkLoginMenu = new javax.swing.JMenuItem();
 
         jMenuItem6.setText("jMenuItem6");
 
@@ -57,64 +57,64 @@ public class MainMenu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Main Menu");
 
-        jButton1.setText("View Property");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        viewPropertyButton.setText("View Property");
+        viewPropertyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                viewPropertyButtonActionPerformed(evt);
             }
         });
 
-        jMenu1.setText("File");
+        menuBar.setText("File");
 
-        jMenuItem1.setText("Exit");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        exitMenu.setText("Exit");
+        exitMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                exitMenuActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        menuBar.add(exitMenu);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuBar);
 
-        jMenu3.setText("Manager");
+        managerMenu.setText("Manager");
 
-        jMenuItem2.setText("Register");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        managerRegisterMenu.setText("Register");
+        managerRegisterMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                managerRegisterMenuActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem2);
+        managerMenu.add(managerRegisterMenu);
 
-        jMenuItem3.setText("Login");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        managerLoginMenu.setText("Login");
+        managerLoginMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                managerLoginMenuActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem3);
+        managerMenu.add(managerLoginMenu);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(managerMenu);
 
-        jMenu5.setText("Clerk");
+        clerkMenu.setText("Clerk");
 
-        jMenuItem4.setText("Register");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        clerkRegisterMenu.setText("Register");
+        clerkRegisterMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                clerkRegisterMenuActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem4);
+        clerkMenu.add(clerkRegisterMenu);
 
-        jMenuItem13.setText("Login");
-        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+        clerkLoginMenu.setText("Login");
+        clerkLoginMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem13ActionPerformed(evt);
+                clerkLoginMenuActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem13);
+        clerkMenu.add(clerkLoginMenu);
 
-        jMenuBar1.add(jMenu5);
+        jMenuBar1.add(clerkMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -124,48 +124,52 @@ public class MainMenu extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(252, 252, 252)
-                .addComponent(jButton1)
+                .addComponent(viewPropertyButton)
                 .addContainerGap(253, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(90, 90, 90)
-                .addComponent(jButton1)
+                .addComponent(viewPropertyButton)
                 .addContainerGap(111, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void exitMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_exitMenuActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void managerLoginMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managerLoginMenuActionPerformed
         new ManagerLogin().setVisible(true);
         dispose(); // Closes window
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_managerLoginMenuActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new PropertyMainMenu().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void viewPropertyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPropertyButtonActionPerformed
+        try {
+            new PropertyMainMenu().setVisible(true);
+            dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_viewPropertyButtonActionPerformed
 
-    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+    private void clerkLoginMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clerkLoginMenuActionPerformed
         new BookingAgentLogin().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenuItem13ActionPerformed
+    }//GEN-LAST:event_clerkLoginMenuActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void managerRegisterMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managerRegisterMenuActionPerformed
        new AddManager().setVisible(true);
        dispose();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_managerRegisterMenuActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void clerkRegisterMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clerkRegisterMenuActionPerformed
         new AddClerk().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_clerkRegisterMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,18 +207,18 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenuItem clerkLoginMenu;
+    private javax.swing.JMenu clerkMenu;
+    private javax.swing.JMenuItem clerkRegisterMenu;
+    private javax.swing.JMenuItem exitMenu;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem13;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem managerLoginMenu;
+    private javax.swing.JMenu managerMenu;
+    private javax.swing.JMenuItem managerRegisterMenu;
+    private javax.swing.JMenu menuBar;
+    private javax.swing.JButton viewPropertyButton;
     // End of variables declaration//GEN-END:variables
 }

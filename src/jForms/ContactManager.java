@@ -56,7 +56,7 @@ public final class ContactManager extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         managerNumber = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        closeButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Contact Manager");
@@ -64,13 +64,13 @@ public final class ContactManager extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
         jLabel1.setText("Call Now!");
 
-        managerNumber.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         managerNumber.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        managerNumber.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
 
-        jButton1.setText("Close");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        closeButton.setText("Close");
+        closeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                closeButtonActionPerformed(evt);
             }
         });
 
@@ -88,7 +88,7 @@ public final class ContactManager extends javax.swing.JFrame {
                         .addComponent(managerNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(closeButton)
                         .addGap(154, 154, 154))))
         );
         layout.setVerticalGroup(
@@ -99,16 +99,16 @@ public final class ContactManager extends javax.swing.JFrame {
                 .addGap(57, 57, 57)
                 .addComponent(managerNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(closeButton)
                 .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_closeButtonActionPerformed
     
     /**
      * @param args the command line arguments
@@ -146,7 +146,7 @@ public final class ContactManager extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton closeButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel managerNumber;
     // End of variables declaration//GEN-END:variables

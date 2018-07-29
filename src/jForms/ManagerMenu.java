@@ -40,17 +40,17 @@ public class ManagerMenu extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        menuBar = new javax.swing.JMenu();
+        mainMenu = new javax.swing.JMenuItem();
+        exitMenu = new javax.swing.JMenuItem();
+        propertyMenu = new javax.swing.JMenu();
+        addPropertyMenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Manager Menu");
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
         jLabel1.setText("Manager Menu");
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
 
         org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, customerList1, jTable1);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${id}"));
@@ -76,37 +76,37 @@ public class ManagerMenu extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(jTable1);
 
-        jMenu1.setText("File");
+        menuBar.setText("File");
 
-        jMenuItem1.setText("Main Menu");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        mainMenu.setText("Main Menu");
+        mainMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                mainMenuActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        menuBar.add(mainMenu);
 
-        jMenuItem2.setText("Exit");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        exitMenu.setText("Exit");
+        exitMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                exitMenuActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        menuBar.add(exitMenu);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuBar);
 
-        jMenu2.setText("Property");
+        propertyMenu.setText("Property");
 
-        jMenuItem3.setText("Add");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        addPropertyMenu.setText("Add");
+        addPropertyMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                addPropertyMenuActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem3);
+        propertyMenu.add(addPropertyMenu);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(propertyMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -134,23 +134,23 @@ public class ManagerMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void mainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuActionPerformed
         new MainMenu().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_mainMenuActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void exitMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_exitMenuActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void addPropertyMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPropertyMenuActionPerformed
         try {
             new AddProperty().setVisible(true);
             dispose();
         } catch (SQLException ex) {
             Logger.getLogger(ManagerMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_addPropertyMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,19 +190,19 @@ public class ManagerMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.persistence.EntityManager OOPPUEntityManager0;
+    private javax.swing.JMenuItem addPropertyMenu;
     private java.util.List<jForms.Customer> customerList;
     private java.util.List<jForms.Customer> customerList1;
     private javax.persistence.Query customerQuery;
     private javax.persistence.Query customerQuery1;
+    private javax.swing.JMenuItem exitMenu;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JMenuItem mainMenu;
+    private javax.swing.JMenu menuBar;
+    private javax.swing.JMenu propertyMenu;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

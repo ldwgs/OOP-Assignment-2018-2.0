@@ -32,58 +32,58 @@ public class BookingClerkMenu extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        menuBar = new javax.swing.JMenu();
+        mainMenu = new javax.swing.JMenuItem();
+        exitMenu = new javax.swing.JMenuItem();
+        bookingsMenu = new javax.swing.JMenu();
+        addBookingsMenu = new javax.swing.JMenuItem();
+        viewAllBookingsMenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Booking Clerk Menu");
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
         jLabel1.setText("Booking Clerk Menu");
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
 
-        jMenu1.setText("File");
+        menuBar.setText("File");
 
-        jMenuItem1.setText("Main Menu");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        mainMenu.setText("Main Menu");
+        mainMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                mainMenuActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        menuBar.add(mainMenu);
 
-        jMenuItem2.setText("Exit");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        exitMenu.setText("Exit");
+        exitMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                exitMenuActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        menuBar.add(exitMenu);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuBar);
 
-        jMenu2.setText("Bookings");
+        bookingsMenu.setText("Bookings");
 
-        jMenuItem3.setText("Add");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        addBookingsMenu.setText("Add");
+        addBookingsMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                addBookingsMenuActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem3);
+        bookingsMenu.add(addBookingsMenu);
 
-        jMenuItem4.setText("View All");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        viewAllBookingsMenu.setText("View All");
+        viewAllBookingsMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                viewAllBookingsMenuActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem4);
+        bookingsMenu.add(viewAllBookingsMenu);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(bookingsMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -107,27 +107,27 @@ public class BookingClerkMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void mainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuActionPerformed
         new MainMenu().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_mainMenuActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void exitMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_exitMenuActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void addBookingsMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBookingsMenuActionPerformed
         try {
             new AddBooking().setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(BookingClerkMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_addBookingsMenuActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void viewAllBookingsMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAllBookingsMenuActionPerformed
         new ClerkBookings().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_viewAllBookingsMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,13 +165,13 @@ public class BookingClerkMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem addBookingsMenu;
+    private javax.swing.JMenu bookingsMenu;
+    private javax.swing.JMenuItem exitMenu;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem mainMenu;
+    private javax.swing.JMenu menuBar;
+    private javax.swing.JMenuItem viewAllBookingsMenu;
     // End of variables declaration//GEN-END:variables
 }

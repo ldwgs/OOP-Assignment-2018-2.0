@@ -108,17 +108,17 @@ while(rs.next()) {
         propertyArea = new javax.swing.JLabel();
         propertyPrice = new javax.swing.JLabel();
         propertySize = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        contactManagerButton = new javax.swing.JButton();
         propertyType1 = new javax.swing.JLabel();
         propertyType2 = new javax.swing.JLabel();
         propertyImage = new javax.swing.JLabel();
         propertyMap = new javax.swing.JLabel();
         propertyName = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        closeFormButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        menuBar = new javax.swing.JMenu();
+        mainMenu = new javax.swing.JMenuItem();
+        exitMenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Properties");
@@ -157,10 +157,10 @@ while(rs.next()) {
         propertySize.setText("<SIZE RANGE SQFT>");
         propertySize.setToolTipText("");
 
-        jButton1.setText("Contact Manager");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        contactManagerButton.setText("Contact Manager");
+        contactManagerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                contactManagerButtonActionPerformed(evt);
             }
         });
 
@@ -180,10 +180,10 @@ while(rs.next()) {
         propertyName.setText("<NAME>");
         propertyName.setToolTipText("");
 
-        jButton2.setText("Close");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        closeFormButton.setText("Close");
+        closeFormButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                closeFormButtonActionPerformed(evt);
             }
         });
 
@@ -192,15 +192,15 @@ while(rs.next()) {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(445, 445, 445)
+                .addGap(377, 377, 377)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(propertyImage, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(propertyMap, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(contactManagerButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)))
+                        .addComponent(closeFormButton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -233,8 +233,8 @@ while(rs.next()) {
                         .addComponent(propertyMap, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(closeFormButton)
+                    .addComponent(contactManagerButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -267,25 +267,25 @@ while(rs.next()) {
                     .addContainerGap(258, Short.MAX_VALUE)))
         );
 
-        jMenu3.setText("File");
+        menuBar.setText("File");
 
-        jMenuItem1.setText("Main Menu");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        mainMenu.setText("Main Menu");
+        mainMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                mainMenuActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem1);
+        menuBar.add(mainMenu);
 
-        jMenuItem2.setText("Exit");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        exitMenu.setText("Exit");
+        exitMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                exitMenuActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem2);
+        menuBar.add(exitMenu);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(menuBar);
 
         setJMenuBar(jMenuBar1);
 
@@ -309,22 +309,22 @@ while(rs.next()) {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void mainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuActionPerformed
         new MainMenu().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_mainMenuActionPerformed
     
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void exitMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_exitMenuActionPerformed
     
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void closeFormButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeFormButtonActionPerformed
         dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_closeFormButtonActionPerformed
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void contactManagerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactManagerButtonActionPerformed
         new ContactManager().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_contactManagerButtonActionPerformed
     
     private void forSaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forSaleActionPerformed
         // TODO add your handling code here:
@@ -376,15 +376,15 @@ while(rs.next()) {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton closeFormButton;
+    private javax.swing.JButton contactManagerButton;
+    private javax.swing.JMenuItem exitMenu;
     private javax.swing.JCheckBox forRent;
     private javax.swing.JCheckBox forSale;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenuItem mainMenu;
+    private javax.swing.JMenu menuBar;
     private javax.swing.JLabel propertyArea;
     private javax.swing.JLabel propertyImage;
     private javax.swing.JLabel propertyMap;

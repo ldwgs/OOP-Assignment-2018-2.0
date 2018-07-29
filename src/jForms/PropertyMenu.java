@@ -204,7 +204,7 @@ while(rs.next()) {
         propertyArea = new javax.swing.JLabel();
         propertyPrice = new javax.swing.JLabel();
         propertySize = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        contactManagerButton = new javax.swing.JButton();
         nextButton = new javax.swing.JButton();
         previousButton = new javax.swing.JButton();
         propertyType1 = new javax.swing.JLabel();
@@ -228,19 +228,19 @@ while(rs.next()) {
         recommend3Name = new javax.swing.JLabel();
         recommend3Price = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        menuBar = new javax.swing.JMenu();
+        mainMenu = new javax.swing.JMenuItem();
+        exitMenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Properties");
 
-        tempo.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         tempo.setText("Other Nearby Properties");
+        tempo.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         tempo.setToolTipText("");
 
-        propertyType.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         propertyType.setText("<TYPE>");
+        propertyType.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         propertyType.setToolTipText("");
 
         forRent.setEnabled(false);
@@ -257,26 +257,26 @@ while(rs.next()) {
             }
         });
 
-        propertyState.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         propertyState.setText("<STATE>");
+        propertyState.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         propertyState.setToolTipText("");
 
-        propertyArea.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         propertyArea.setText("<AREA>");
+        propertyArea.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         propertyArea.setToolTipText("");
 
-        propertyPrice.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         propertyPrice.setText("<PRICE>");
+        propertyPrice.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         propertyPrice.setToolTipText("");
 
-        propertySize.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         propertySize.setText("<SIZE RANGE SQFT>");
+        propertySize.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         propertySize.setToolTipText("");
 
-        jButton1.setText("Contact Manager");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        contactManagerButton.setText("Contact Manager");
+        contactManagerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                contactManagerButtonActionPerformed(evt);
             }
         });
 
@@ -294,20 +294,20 @@ while(rs.next()) {
             }
         });
 
-        propertyType1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         propertyType1.setText("For Rent");
+        propertyType1.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         propertyType1.setToolTipText("");
 
-        propertyType2.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         propertyType2.setText("For Sale");
+        propertyType2.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         propertyType2.setToolTipText("");
 
         propertyImage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         propertyMap.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        propertyName.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         propertyName.setText("<NAME>");
+        propertyName.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         propertyName.setToolTipText("");
 
         recommend1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -316,16 +316,16 @@ while(rs.next()) {
 
         recommend3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        recommend1Name.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         recommend1Name.setText("<NAME>");
+        recommend1Name.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         recommend1Name.setToolTipText("");
 
-        recommend1Type.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         recommend1Type.setText("<TYPE>");
+        recommend1Type.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         recommend1Type.setToolTipText("");
 
-        recommend1Price.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         recommend1Price.setText("<PRICE>");
+        recommend1Price.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         recommend1Price.setToolTipText("");
 
         recommend1View.setText("View");
@@ -349,28 +349,28 @@ while(rs.next()) {
             }
         });
 
-        recommend2Name.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         recommend2Name.setText("<NAME>");
+        recommend2Name.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         recommend2Name.setToolTipText("");
 
-        recommend2Type.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         recommend2Type.setText("<TYPE>");
+        recommend2Type.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         recommend2Type.setToolTipText("");
 
-        recommend2Price.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         recommend2Price.setText("<PRICE>");
+        recommend2Price.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         recommend2Price.setToolTipText("");
 
-        recommend3Type.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         recommend3Type.setText("<TYPE>");
+        recommend3Type.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         recommend3Type.setToolTipText("");
 
-        recommend3Name.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         recommend3Name.setText("<NAME>");
+        recommend3Name.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         recommend3Name.setToolTipText("");
 
-        recommend3Price.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         recommend3Price.setText("<PRICE>");
+        recommend3Price.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         recommend3Price.setToolTipText("");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -380,7 +380,7 @@ while(rs.next()) {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(408, 408, 408)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
+                    .addComponent(contactManagerButton)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(previousButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -453,7 +453,7 @@ while(rs.next()) {
                         .addGap(324, 324, 324)
                         .addComponent(propertyMap, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(contactManagerButton)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nextButton)
@@ -526,25 +526,25 @@ while(rs.next()) {
 
         jScrollPane1.setViewportView(jPanel1);
 
-        jMenu3.setText("File");
+        menuBar.setText("File");
 
-        jMenuItem1.setText("Main Menu");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        mainMenu.setText("Main Menu");
+        mainMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                mainMenuActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem1);
+        menuBar.add(mainMenu);
 
-        jMenuItem2.setText("Exit");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        exitMenu.setText("Exit");
+        exitMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                exitMenuActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem2);
+        menuBar.add(exitMenu);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(menuBar);
 
         setJMenuBar(jMenuBar1);
 
@@ -564,14 +564,14 @@ while(rs.next()) {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void mainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuActionPerformed
         new MainMenu().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_mainMenuActionPerformed
     
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void exitMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_exitMenuActionPerformed
     
     private void previousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousButtonActionPerformed
         counter--;
@@ -591,9 +591,9 @@ while(rs.next()) {
         }
     }//GEN-LAST:event_nextButtonActionPerformed
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void contactManagerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactManagerButtonActionPerformed
         new ContactManager().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_contactManagerButtonActionPerformed
     
     private void recommend1ViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recommend1ViewActionPerformed
         counter = 1;
@@ -671,15 +671,15 @@ while(rs.next()) {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton contactManagerButton;
+    private javax.swing.JMenuItem exitMenu;
     private javax.swing.JCheckBox forRent;
     private javax.swing.JCheckBox forSale;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenuItem mainMenu;
+    private javax.swing.JMenu menuBar;
     private javax.swing.JButton nextButton;
     private javax.swing.JButton previousButton;
     private javax.swing.JLabel propertyArea;

@@ -36,38 +36,38 @@ public class AddManager extends javax.swing.JFrame {
         managerGender = new javax.swing.JTextField();
         managerEmail = new javax.swing.JTextField();
         managerContact = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        addManagerButton = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         managerPassword = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         managerUsername = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        menuBar = new javax.swing.JMenu();
+        mainMenu = new javax.swing.JMenuItem();
+        exitMenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add Manager");
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel1.setText("Add Manager");
         jLabel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel2.setText("ID :");
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel3.setText("Name :");
+        jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel4.setText("Gender :");
+        jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel5.setText("E-Mail :");
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel6.setText("Contact Number :");
+        jLabel6.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
 
         managerID.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
 
@@ -79,43 +79,43 @@ public class AddManager extends javax.swing.JFrame {
 
         managerContact.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jButton1.setText("Add");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        addManagerButton.setText("Add");
+        addManagerButton.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        addManagerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                addManagerButtonActionPerformed(evt);
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel7.setText("Username :");
+        jLabel7.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
 
         managerPassword.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
 
-        jLabel8.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel8.setText("Password :");
+        jLabel8.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
 
         managerUsername.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
 
-        jMenu1.setText("File");
+        menuBar.setText("File");
 
-        jMenuItem1.setText("Main Menu");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        mainMenu.setText("Main Menu");
+        mainMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                mainMenuActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        menuBar.add(mainMenu);
 
-        jMenuItem2.setText("Exit");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        exitMenu.setText("Exit");
+        exitMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                exitMenuActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        menuBar.add(exitMenu);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuBar);
 
         setJMenuBar(jMenuBar1);
 
@@ -129,7 +129,7 @@ public class AddManager extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(185, 185, 185))
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(addManagerButton, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel8)
@@ -195,14 +195,14 @@ public class AddManager extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(managerPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
-                .addComponent(jButton1)
+                .addComponent(addManagerButton)
                 .addContainerGap(52, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void addManagerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addManagerButtonActionPerformed
         // Check for if any of the fields are empty. All fields need to be filled.
         if (managerID.getText().isEmpty() || managerName.getText().isEmpty() || managerGender.getText().isEmpty() 
                 || managerEmail.getText().isEmpty() || managerContact.getText().isEmpty() || managerUsername.getText().isEmpty() || managerPassword.getText().isEmpty()) {
@@ -218,16 +218,16 @@ public class AddManager extends javax.swing.JFrame {
                         managerPassword.getText().trim(), 
                         managerUsername.getText().trim());
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_addManagerButtonActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void mainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuActionPerformed
         new MainMenu().setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_mainMenuActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void exitMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_exitMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -266,7 +266,8 @@ public class AddManager extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton addManagerButton;
+    private javax.swing.JMenuItem exitMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -275,10 +276,8 @@ public class AddManager extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem mainMenu;
     private javax.swing.JTextField managerContact;
     private javax.swing.JTextField managerEmail;
     private javax.swing.JTextField managerGender;
@@ -286,5 +285,6 @@ public class AddManager extends javax.swing.JFrame {
     private javax.swing.JTextField managerName;
     private javax.swing.JTextField managerPassword;
     private javax.swing.JTextField managerUsername;
+    private javax.swing.JMenu menuBar;
     // End of variables declaration//GEN-END:variables
 }
