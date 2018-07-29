@@ -201,9 +201,8 @@ public class AddManager extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
         // Check for if any of the fields are empty. All fields need to be filled.
         if (managerID.getText().isEmpty() || managerName.getText().isEmpty() || managerGender.getText().isEmpty() 
                 || managerEmail.getText().isEmpty() || managerContact.getText().isEmpty() || managerUsername.getText().isEmpty() || managerPassword.getText().isEmpty()) {

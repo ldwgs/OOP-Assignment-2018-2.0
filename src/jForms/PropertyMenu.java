@@ -1,10 +1,10 @@
 package jForms;
 
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 
 
 import java.awt.Image;
@@ -34,7 +34,85 @@ public final class PropertyMenu extends javax.swing.JFrame {
      */
     public PropertyMenu() throws IOException {
         initComponents();
-        initProperty(); 
+        initProperty();
+        initRecommendedProperties1();
+        initRecommendedProperties2();
+        initRecommendedProperties3();
+    }
+    
+    public void initRecommendedProperties1() throws IOException{
+        try {
+            Statement s = DriverManager.getConnection("jdbc:derby://localhost:1527/OOP", "ludwig", "password").createStatement();
+            String sql = "SELECT * FROM Property WHERE ID = " + counter + "AND STATE = " + "'" + PropertyMainMenu.state + "'";
+            ResultSet rs = s.executeQuery(sql);
+            
+            while(rs.next()) {
+                recommend1Name.setText(rs.getString("NAME"));
+                recommend1Type.setText(rs.getString("TYPE"));
+                recommend1Price.setText(rs.getString("PRICE"));
+                
+                InputStream propertyImageIS = rs.getBinaryStream("IMAGE");
+                // Decode the inputstream as BufferedImage
+                BufferedImage propertyImageBuff;
+                propertyImageBuff = ImageIO.read(propertyImageIS);
+                Image propertyImageI = propertyImageBuff;
+                ImageIcon propertyImageIcon =new ImageIcon(propertyImageI);
+                recommend1.setIcon(propertyImageIcon);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(PropertyMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void initRecommendedProperties2() throws IOException{
+        try {
+            Statement s = DriverManager.getConnection("jdbc:derby://localhost:1527/OOP", "ludwig", "password").createStatement();
+            String sql = "SELECT * FROM Property WHERE ID = " + (counter + 1) + "AND STATE = " + "'" + PropertyMainMenu.state + "'";
+            ResultSet rs = s.executeQuery(sql);
+            
+            while(rs.next()) {
+                recommend2Name.setText(rs.getString("NAME"));
+                recommend2Type.setText(rs.getString("TYPE"));
+                recommend2Price.setText(rs.getString("PRICE"));
+                
+                InputStream propertyImageIS = rs.getBinaryStream("IMAGE");
+                // Decode the inputstream as BufferedImage
+                BufferedImage propertyImageBuff;
+                propertyImageBuff = ImageIO.read(propertyImageIS);
+                Image propertyImageI = propertyImageBuff;
+                ImageIcon propertyImageIcon =new ImageIcon(propertyImageI);
+                recommend2.setIcon(propertyImageIcon);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(PropertyMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void initRecommendedProperties3() throws IOException{
+        try {
+            Statement s = DriverManager.getConnection("jdbc:derby://localhost:1527/OOP", "ludwig", "password").createStatement();
+            String sql = "SELECT * FROM Property WHERE ID = " + (counter + 2) + "AND STATE = " + "'" + PropertyMainMenu.state + "'";
+            ResultSet rs = s.executeQuery(sql);
+            
+            while(rs.next()) {
+                recommend3Name.setText(rs.getString("NAME"));
+                recommend3Type.setText(rs.getString("TYPE"));
+                recommend3Price.setText(rs.getString("PRICE"));
+                
+                InputStream propertyImageIS = rs.getBinaryStream("IMAGE");
+                // Decode the inputstream as BufferedImage
+                BufferedImage propertyImageBuff;
+                propertyImageBuff = ImageIO.read(propertyImageIS);
+                Image propertyImageI = propertyImageBuff;
+                ImageIcon propertyImageIcon =new ImageIcon(propertyImageI);
+                recommend3.setIcon(propertyImageIcon);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(PropertyMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void initProperty() throws IOException {
@@ -47,45 +125,46 @@ public final class PropertyMenu extends javax.swing.JFrame {
         }
         if (counter == getTableSize()) {
             nextButton.setEnabled(false);
-        } 
+        }
         if (counter < getTableSize()) {
             nextButton.setEnabled(true);
         }
         
         try {
             Statement s = DriverManager.getConnection("jdbc:derby://localhost:1527/OOP", "ludwig", "password").createStatement();
-            String sql = "SELECT * FROM Property WHERE ID = " + counter;
+//            String sql = "SELECT * FROM Property WHERE ID = " + counter + "AND STATE = " + "'" + PropertyMainMenu.state + "'";
+            String sql = "SELECT * FROM Property WHERE STATE = " + "'" + PropertyMainMenu.state + "'";
             ResultSet rs = s.executeQuery(sql);
-                
-            while(rs.next()) {
-                propertyName.setText(rs.getString("NAME"));
-                propertyType.setText(rs.getString("TYPE"));
-                    
-                forRent.setSelected(rs.getBoolean("TORENT"));
-                forSale.setSelected(rs.getBoolean("TOSELL"));
-                    
-                propertyState.setText(rs.getString("STATE"));
-                propertyArea.setText(rs.getString("ADDRESS"));
-                propertyPrice.setText(rs.getString("PRICE"));
-                propertySize.setText(rs.getString("SQUAREFOOTAGE"));
-                
-                InputStream propertyImageIS = rs.getBinaryStream("IMAGE"); 
-                // Decode the inputstream as BufferedImage
-                BufferedImage propertyImageBuff;
-                propertyImageBuff = ImageIO.read(propertyImageIS);
-                Image propertyImageI = propertyImageBuff;
-                ImageIcon propertyImageIcon =new ImageIcon(propertyImageI);
-                propertyImage.setIcon(propertyImageIcon); 
-                
-                InputStream propertyMapIS = rs.getBinaryStream("MAP"); 
-                // Decode the inputstream as BufferedImage
-                BufferedImage propertyMapBuff;
-                propertyMapBuff = ImageIO.read(propertyMapIS);
-                Image propertyMapI = propertyMapBuff;
-                ImageIcon propertyMapIcon =new ImageIcon(propertyMapI);
-                propertyMap.setIcon(propertyMapIcon); 
-                }
-            
+
+while(rs.next()) {
+    propertyName.setText(rs.getString("NAME"));
+    propertyType.setText(rs.getString("TYPE"));
+    
+    forRent.setSelected(rs.getBoolean("TORENT"));
+    forSale.setSelected(rs.getBoolean("TOSELL"));
+    
+    propertyState.setText(rs.getString("STATE"));
+    propertyArea.setText(rs.getString("ADDRESS"));
+    propertyPrice.setText(rs.getString("PRICE"));
+    propertySize.setText(rs.getString("SQUAREFOOTAGE"));
+    
+    InputStream propertyImageIS = rs.getBinaryStream("IMAGE");
+    // Decode the inputstream as BufferedImage
+    BufferedImage propertyImageBuff;
+    propertyImageBuff = ImageIO.read(propertyImageIS);
+    Image propertyImageI = propertyImageBuff;
+    ImageIcon propertyImageIcon =new ImageIcon(propertyImageI);
+    propertyImage.setIcon(propertyImageIcon);
+    
+    InputStream propertyMapIS = rs.getBinaryStream("MAP");
+    // Decode the inputstream as BufferedImage
+    BufferedImage propertyMapBuff;
+    propertyMapBuff = ImageIO.read(propertyMapIS);
+    Image propertyMapI = propertyMapBuff;
+    ImageIcon propertyMapIcon =new ImageIcon(propertyMapI);
+    propertyMap.setIcon(propertyMapIcon);
+}
+
         } catch (SQLException ex) {
             Logger.getLogger(PropertyMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -107,7 +186,7 @@ public final class PropertyMenu extends javax.swing.JFrame {
         
         return size;
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form. WARNING: Do NOT modify this code. The content of this method is always regenerated by the Form Editor.
      */
@@ -115,7 +194,9 @@ public final class PropertyMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        propertyName = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
+        tempo = new javax.swing.JLabel();
         propertyType = new javax.swing.JLabel();
         forRent = new javax.swing.JCheckBox();
         forSale = new javax.swing.JCheckBox();
@@ -130,16 +211,33 @@ public final class PropertyMenu extends javax.swing.JFrame {
         propertyType2 = new javax.swing.JLabel();
         propertyImage = new javax.swing.JLabel();
         propertyMap = new javax.swing.JLabel();
+        propertyName = new javax.swing.JLabel();
+        recommend1 = new javax.swing.JLabel();
+        recommend2 = new javax.swing.JLabel();
+        recommend3 = new javax.swing.JLabel();
+        recommend1Name = new javax.swing.JLabel();
+        recommend1Type = new javax.swing.JLabel();
+        recommend1Price = new javax.swing.JLabel();
+        recommend1View = new javax.swing.JButton();
+        recommend2View = new javax.swing.JButton();
+        recommend3View = new javax.swing.JButton();
+        recommend2Name = new javax.swing.JLabel();
+        recommend2Type = new javax.swing.JLabel();
+        recommend2Price = new javax.swing.JLabel();
+        recommend3Type = new javax.swing.JLabel();
+        recommend3Name = new javax.swing.JLabel();
+        recommend3Price = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Properties");
 
-        propertyName.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        propertyName.setText("<NAME>");
-        propertyName.setToolTipText("");
+        tempo.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        tempo.setText("Other Nearby Properties");
+        tempo.setToolTipText("");
 
         propertyType.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         propertyType.setText("<TYPE>");
@@ -175,7 +273,7 @@ public final class PropertyMenu extends javax.swing.JFrame {
         propertySize.setText("<SIZE RANGE SQFT>");
         propertySize.setToolTipText("");
 
-        jButton1.setText("Contact");
+        jButton1.setText("Contact Manager");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -204,6 +302,237 @@ public final class PropertyMenu extends javax.swing.JFrame {
         propertyType2.setText("For Sale");
         propertyType2.setToolTipText("");
 
+        propertyImage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        propertyMap.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        propertyName.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        propertyName.setText("<NAME>");
+        propertyName.setToolTipText("");
+
+        recommend1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        recommend2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        recommend3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        recommend1Name.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        recommend1Name.setText("<NAME>");
+        recommend1Name.setToolTipText("");
+
+        recommend1Type.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        recommend1Type.setText("<TYPE>");
+        recommend1Type.setToolTipText("");
+
+        recommend1Price.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        recommend1Price.setText("<PRICE>");
+        recommend1Price.setToolTipText("");
+
+        recommend1View.setText("View");
+        recommend1View.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                recommend1ViewActionPerformed(evt);
+            }
+        });
+
+        recommend2View.setText("View");
+        recommend2View.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                recommend2ViewActionPerformed(evt);
+            }
+        });
+
+        recommend3View.setText("View");
+        recommend3View.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                recommend3ViewActionPerformed(evt);
+            }
+        });
+
+        recommend2Name.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        recommend2Name.setText("<NAME>");
+        recommend2Name.setToolTipText("");
+
+        recommend2Type.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        recommend2Type.setText("<TYPE>");
+        recommend2Type.setToolTipText("");
+
+        recommend2Price.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        recommend2Price.setText("<PRICE>");
+        recommend2Price.setToolTipText("");
+
+        recommend3Type.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        recommend3Type.setText("<TYPE>");
+        recommend3Type.setToolTipText("");
+
+        recommend3Name.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        recommend3Name.setText("<NAME>");
+        recommend3Name.setToolTipText("");
+
+        recommend3Price.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        recommend3Price.setText("<PRICE>");
+        recommend3Price.setToolTipText("");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(propertyImage, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(propertyMap, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(previousButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nextButton))
+                    .addComponent(jButton1))
+                .addGap(48, 48, 48))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(408, 408, 408)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(recommend2, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(112, 112, 112)
+                        .addComponent(recommend3, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(recommend2Price, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(recommend2Type, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(recommend2Name, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(110, 110, 110)
+                                .addComponent(recommend2View)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(131, 131, 131)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(recommend3Price, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(recommend3Type, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(recommend3Name, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(238, 238, 238)
+                                .addComponent(recommend3View)))))
+                .addContainerGap(449, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(recommend1Price, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(recommend1Type, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(recommend1Name, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tempo, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(recommend1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(100, 100, 100)
+                            .addComponent(recommend1View))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(14, 14, 14)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(propertySize, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(propertyPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(propertyState, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(propertyArea, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(propertyType, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(propertyType1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(propertyType2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(forSale)
+                                        .addComponent(forRent)))
+                                .addComponent(propertyName, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGap(776, 1223, Short.MAX_VALUE)))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(propertyImage, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(324, 324, 324)
+                                .addComponent(propertyMap, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(jButton1)
+                        .addGap(544, 544, 544)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nextButton)
+                            .addComponent(previousButton))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(recommend2, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(recommend3, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(recommend3Name, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(recommend3Type, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(recommend3Price, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(recommend3View))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(recommend2Name, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(recommend2Type, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(recommend2Price, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(recommend2View)))
+                .addGap(273, 273, 273))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(propertyName, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(propertyType, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(29, 29, 29)
+                                    .addComponent(propertyType2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(7, 7, 7))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(forRent)
+                                    .addGap(18, 18, 18)))
+                            .addComponent(propertyType1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(129, 129, 129)
+                            .addComponent(forSale)
+                            .addGap(46, 46, 46)
+                            .addComponent(propertyState, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(propertyArea, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(propertyPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(propertySize, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(265, 265, 265)
+                    .addComponent(tempo, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(recommend1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(recommend1Name, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(recommend1Type, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(recommend1Price, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(recommend1View)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
+        jScrollPane1.setViewportView(jPanel1);
+
         jMenu3.setText("File");
 
         jMenuItem1.setText("Main Menu");
@@ -231,114 +560,35 @@ public final class PropertyMenu extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(previousButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nextButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(propertyName, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(propertySize, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(propertyPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(propertyState, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(propertyArea, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(propertyType, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(propertyType1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(propertyType2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(forSale)
-                                            .addComponent(forRent))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(propertyImage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(propertyMap, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(100, 100, 100)))
-                        .addComponent(jButton1)))
-                .addGap(25, 25, 25))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(propertyName, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(propertyType, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(propertyType2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(7, 7, 7))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(forRent)
-                        .addGap(18, 18, 18)))
-                .addComponent(propertyType1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(220, 220, 220)
-                .addComponent(forSale)
-                .addGap(46, 46, 46)
-                .addComponent(propertyState, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(propertyArea, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(propertyPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(propertySize, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 225, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nextButton)
-                    .addComponent(previousButton))
-                .addGap(51, 51, 51))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(propertyImage, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100)
-                .addComponent(propertyMap, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(92, 92, 92))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1205, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         new MainMenu().setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-
+    
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void forRentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forRentActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_forRentActionPerformed
-
-    private void forSaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forSaleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_forSaleActionPerformed
-
+    
     private void previousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousButtonActionPerformed
         counter--;
-        try {   
+        try {
             initProperty();
         } catch (IOException ex) {
             Logger.getLogger(PropertyMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_previousButtonActionPerformed
-
+    
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         counter++;
         try {
@@ -347,11 +597,31 @@ public final class PropertyMenu extends javax.swing.JFrame {
             Logger.getLogger(PropertyMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_nextButtonActionPerformed
-
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         new ContactManager().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
+    private void recommend1ViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recommend1ViewActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_recommend1ViewActionPerformed
+    
+    private void recommend2ViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recommend2ViewActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_recommend2ViewActionPerformed
+    
+    private void recommend3ViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recommend3ViewActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_recommend3ViewActionPerformed
+    
+    private void forSaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forSaleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_forSaleActionPerformed
+    
+    private void forRentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forRentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_forRentActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -359,8 +629,8 @@ public final class PropertyMenu extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+        */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -378,7 +648,7 @@ public final class PropertyMenu extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(PropertyMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
@@ -391,7 +661,7 @@ public final class PropertyMenu extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox forRent;
     private javax.swing.JCheckBox forSale;
@@ -400,6 +670,8 @@ public final class PropertyMenu extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton nextButton;
     private javax.swing.JButton previousButton;
     private javax.swing.JLabel propertyArea;
@@ -412,5 +684,21 @@ public final class PropertyMenu extends javax.swing.JFrame {
     private javax.swing.JLabel propertyType;
     private javax.swing.JLabel propertyType1;
     private javax.swing.JLabel propertyType2;
+    private javax.swing.JLabel recommend1;
+    private javax.swing.JLabel recommend1Name;
+    private javax.swing.JLabel recommend1Price;
+    private javax.swing.JLabel recommend1Type;
+    private javax.swing.JButton recommend1View;
+    private javax.swing.JLabel recommend2;
+    private javax.swing.JLabel recommend2Name;
+    private javax.swing.JLabel recommend2Price;
+    private javax.swing.JLabel recommend2Type;
+    private javax.swing.JButton recommend2View;
+    private javax.swing.JLabel recommend3;
+    private javax.swing.JLabel recommend3Name;
+    private javax.swing.JLabel recommend3Price;
+    private javax.swing.JLabel recommend3Type;
+    private javax.swing.JButton recommend3View;
+    private javax.swing.JLabel tempo;
     // End of variables declaration//GEN-END:variables
 }

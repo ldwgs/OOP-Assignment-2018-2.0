@@ -15,14 +15,14 @@ public class BookingAgent extends Employee implements Serializable{
         
     }
     
-    public BookingAgent(String ID, String password, String username, String name, String gender, String email, String contactNumber) {
-        super.ID = ID;
+    public BookingAgent(String password, String username, String name, String gender, String email, String contactNumber, String ID) {
         Employee.password = password;
         Employee.username = username;
         super.name = name;
         super.gender = gender;
         super.email = email;
         super.contactNumber = contactNumber;
+        super.ID = ID;
     }
     
     @Override
@@ -52,19 +52,19 @@ public class BookingAgent extends Employee implements Serializable{
         addBooking.setVisible(true);
     }
     
-    public void register(String ID, String password, String username, String name, String gender, String email, String contactNumber) {
+    public void register(String password, String username, String name, String gender, String email, String contactNumber, String ID) {
         try {
             // Object reference
             Statement s = DriverManager.getConnection("jdbc:derby://localhost:1527/OOP", "ludwig", "password").createStatement();
             
             String sql = "INSERT INTO Clerk " + "VALUES (" +
-                            ID + "," +
                     "'" + password + "'" + "," +
                     "'" + username + "'" + "," +
                     "'" + name + "'" + "," +
                     "'" + gender + "'" + "," +
                     "'" + email + "'" + "," +
-                    "'" + contactNumber + "'" + ")";
+                    "'" + contactNumber + "'" + "," + 
+                          ID + ")";
             
             s.executeUpdate(sql); // This line of code executes the SQL query and adds in the values to the table
             JOptionPane.showMessageDialog(null, "Successfully added new clerk: " + name);

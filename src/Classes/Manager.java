@@ -50,8 +50,8 @@ public class Manager extends Employee implements Serializable{
     @Override
     public void generateReports() {
         // Object reference
-        ManagerBookings managerBookings = new ManagerBookings();
-        managerBookings.setVisible(true);
+        ManagerMenu managerMenu = new ManagerMenu();
+        managerMenu.setVisible(true);
     }
     
     public void register(String ID, String name, String email, String contactNumber, String gender, String password, String username) {
@@ -59,8 +59,8 @@ public class Manager extends Employee implements Serializable{
             // Object reference
             Statement s = DriverManager.getConnection("jdbc:derby://localhost:1527/OOP", "ludwig", "password").createStatement();
             
-            String sql = "INSERT INTO Clerk " + "VALUES (" +
-                            ID + "," +
+            String sql = "INSERT INTO Manager " + "VALUES (" +
+                          ID + "," +
                     "'" + name + "'" + "," +
                     "'" + email + "'" + "," +
                     "'" + contactNumber + "'" + "," +
