@@ -40,7 +40,7 @@ public class AddClerk extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         clerkUsername = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        clerkPassword = new javax.swing.JTextField();
+        clerkPassword = new javax.swing.JPasswordField();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuBar = new javax.swing.JMenu();
         mainMenu = new javax.swing.JMenuItem();
@@ -49,25 +49,25 @@ public class AddClerk extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add Clerk");
 
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel1.setText("Add Clerk");
         jLabel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jLabel2.setText("ID :");
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel2.setText("ID :");
 
-        jLabel3.setText("Name :");
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel3.setText("Name :");
 
-        jLabel4.setText("Gender :");
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel4.setText("Gender :");
 
-        jLabel5.setText("E-Mail :");
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel5.setText("E-Mail :");
 
-        jLabel6.setText("Contact Number :");
         jLabel6.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel6.setText("Contact Number :");
 
         clerkID.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
 
@@ -79,23 +79,21 @@ public class AddClerk extends javax.swing.JFrame {
 
         clerkContact.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
 
-        addClerkButton.setText("Add");
         addClerkButton.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        addClerkButton.setText("Add");
         addClerkButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addClerkButtonActionPerformed(evt);
             }
         });
 
-        jLabel7.setText("Username:");
         jLabel7.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel7.setText("Username:");
 
         clerkUsername.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
 
-        jLabel8.setText("Password :");
         jLabel8.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-
-        clerkPassword.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel8.setText("Password :");
 
         menuBar.setText("File");
 
@@ -130,7 +128,7 @@ public class AddClerk extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel8)
-                            .addGap(18, 18, 18)
+                            .addGap(23, 23, 23)
                             .addComponent(clerkPassword))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel6)
@@ -193,7 +191,7 @@ public class AddClerk extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(clerkPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(clerkPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(addClerkButton)
                 .addGap(38, 38, 38))
@@ -203,21 +201,27 @@ public class AddClerk extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void addClerkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addClerkButtonActionPerformed
+        // Below is code to get the text in the respective text boxes.
+        String ID = clerkID.getText().trim();
+        String name = clerkName.getText().trim();
+        String gender = clerkGender.getText().trim();
+        String email = clerkEmail.getText().trim();
+        String contactNumber = clerkContact.getText().trim();
+        String username = clerkUsername.getText().trim();
+        String password = String.valueOf(clerkPassword.getPassword());
         
         // Check for if any of the fields are empty. All fields need to be filled.
         if (clerkID.getText().isEmpty() || clerkName.getText().isEmpty() || clerkGender.getText().isEmpty()
-                || clerkEmail.getText().isEmpty() || clerkContact.getText().isEmpty() || clerkUsername.getText().isEmpty() || clerkPassword.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please enter all details!");
-        } else {
-            // Below is code to get the text in the respective text boxes.
-            String ID = clerkID.getText().trim();
-            String name = clerkName.getText().trim();
-            String gender = clerkGender.getText().trim();
-            String email = clerkEmail.getText().trim();
-            String contactNumber = clerkContact.getText().trim();
-            String username = clerkUsername.getText().trim();
-            String password = clerkPassword.getText().trim();
-            
+                || clerkEmail.getText().isEmpty() || clerkContact.getText().isEmpty()
+                || clerkUsername.getText().isEmpty() || String.valueOf(clerkPassword.getPassword()).isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Please enter all details!");
+            }
+        // For the statement where the 'Gender' field is empty. Overloading method.
+        if (clerkGender.getText().isEmpty()) {
+            ba.register(ID, password, username, name, email, contactNumber);
+        }
+       
+        else {
             // Below is code to insert the values above into the table
             ba.register(ID, password, username, name, gender, email, contactNumber);
         }
@@ -275,7 +279,7 @@ public class AddClerk extends javax.swing.JFrame {
     private javax.swing.JTextField clerkGender;
     private javax.swing.JTextField clerkID;
     private javax.swing.JTextField clerkName;
-    private javax.swing.JTextField clerkPassword;
+    private javax.swing.JPasswordField clerkPassword;
     private javax.swing.JTextField clerkUsername;
     private javax.swing.JMenuItem exitMenu;
     private javax.swing.JLabel jLabel1;

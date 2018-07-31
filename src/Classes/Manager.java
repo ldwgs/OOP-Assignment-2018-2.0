@@ -54,13 +54,35 @@ public class Manager extends Employee implements Serializable{
         managerMenu.setVisible(true);
     }
     
+    // Overriding method (w/o Gender)
+    public void register(String ID, String name, String email, String contactNumber, String password, String username) {
+        try {
+            // Object reference
+            Statement s = DriverManager.getConnection("jdbc:derby://localhost:1527/OOP", "ludwig", "password").createStatement();
+            
+            String sql = "INSERT INTO Manager " + "VALUES (" +
+                    "'" + ID + "'" + "," +
+                    "'" + name + "'" + "," +
+                    "'" + email + "'" + "," +
+                    "'" + contactNumber + "'" + "," +
+                    "'" + password + "'" + "," +
+                    "'" + username + "'" + ")";
+            
+            s.executeUpdate(sql); // This line of code executes the SQL query and adds in the values to the table
+            JOptionPane.showMessageDialog(null, "Successfully added new manager: " + name);
+        } catch (SQLException ex) {
+            Logger.getLogger(BookingAgent.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    // Default method (w/ Gender)
     public void register(String ID, String name, String email, String contactNumber, String gender, String password, String username) {
         try {
             // Object reference
             Statement s = DriverManager.getConnection("jdbc:derby://localhost:1527/OOP", "ludwig", "password").createStatement();
             
             String sql = "INSERT INTO Manager " + "VALUES (" +
-                          ID + "," +
+                    "'" + ID + "'" + "," +
                     "'" + name + "'" + "," +
                     "'" + email + "'" + "," +
                     "'" + contactNumber + "'" + "," +

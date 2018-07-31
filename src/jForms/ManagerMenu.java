@@ -36,6 +36,8 @@ public class ManagerMenu extends javax.swing.JFrame {
         customerList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : customerQuery.getResultList();
         customerQuery1 = java.beans.Beans.isDesignTime() ? null : OOPPUEntityManager0.createQuery("SELECT c FROM Customer c");
         customerList1 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : customerQuery1.getResultList();
+        customerQuery2 = java.beans.Beans.isDesignTime() ? null : OOPPUEntityManager0.createQuery("SELECT c FROM Customer c");
+        customerList2 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : customerQuery2.getResultList();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -52,7 +54,7 @@ public class ManagerMenu extends javax.swing.JFrame {
         jLabel1.setText("Manager Menu");
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 36)); // NOI18N
 
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, customerList1, jTable1);
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, customerList2, jTable1);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${id}"));
         columnBinding.setColumnName("Id");
         columnBinding.setColumnClass(Integer.class);
@@ -193,8 +195,10 @@ public class ManagerMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem addPropertyMenu;
     private java.util.List<jForms.Customer> customerList;
     private java.util.List<jForms.Customer> customerList1;
+    private java.util.List<jForms.Customer> customerList2;
     private javax.persistence.Query customerQuery;
     private javax.persistence.Query customerQuery1;
+    private javax.persistence.Query customerQuery2;
     private javax.swing.JMenuItem exitMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;

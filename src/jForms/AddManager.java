@@ -38,9 +38,9 @@ public class AddManager extends javax.swing.JFrame {
         managerContact = new javax.swing.JTextField();
         addManagerButton = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        managerPassword = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         managerUsername = new javax.swing.JTextField();
+        managerPassword = new javax.swing.JPasswordField();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuBar = new javax.swing.JMenu();
         mainMenu = new javax.swing.JMenuItem();
@@ -49,25 +49,25 @@ public class AddManager extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add Manager");
 
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel1.setText("Add Manager");
         jLabel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jLabel2.setText("ID :");
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel2.setText("ID :");
 
-        jLabel3.setText("Name :");
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel3.setText("Name :");
 
-        jLabel4.setText("Gender :");
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel4.setText("Gender :");
 
-        jLabel5.setText("E-Mail :");
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel5.setText("E-Mail :");
 
-        jLabel6.setText("Contact Number :");
         jLabel6.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel6.setText("Contact Number :");
 
         managerID.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
 
@@ -79,21 +79,19 @@ public class AddManager extends javax.swing.JFrame {
 
         managerContact.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
 
-        addManagerButton.setText("Add");
         addManagerButton.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        addManagerButton.setText("Add");
         addManagerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addManagerButtonActionPerformed(evt);
             }
         });
 
-        jLabel7.setText("Username :");
         jLabel7.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel7.setText("Username :");
 
-        managerPassword.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-
-        jLabel8.setText("Password :");
         jLabel8.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel8.setText("Password :");
 
         managerUsername.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
 
@@ -132,10 +130,6 @@ public class AddManager extends javax.swing.JFrame {
                     .addComponent(addManagerButton, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel8)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(managerPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel6)
                             .addGap(18, 18, 18)
                             .addComponent(managerContact))
@@ -156,9 +150,13 @@ public class AddManager extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addComponent(managerID, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel7)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel7)
+                                .addComponent(jLabel8))
                             .addGap(18, 18, 18)
-                            .addComponent(managerUsername))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(managerPassword)
+                                .addComponent(managerUsername)))))
                 .addContainerGap(79, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -191,12 +189,12 @@ public class AddManager extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(managerUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(managerPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(managerPassword))
+                .addGap(31, 31, 31)
                 .addComponent(addManagerButton)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         pack();
@@ -204,10 +202,26 @@ public class AddManager extends javax.swing.JFrame {
     
     private void addManagerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addManagerButtonActionPerformed
         // Check for if any of the fields are empty. All fields need to be filled.
-        if (managerID.getText().isEmpty() || managerName.getText().isEmpty() || managerGender.getText().isEmpty() 
-                || managerEmail.getText().isEmpty() || managerContact.getText().isEmpty() || managerUsername.getText().isEmpty() || managerPassword.getText().isEmpty()) {
+        if (managerUsername.getText().isEmpty() || String.valueOf(managerPassword.getPassword()).isEmpty() 
+                || managerID.getText().isEmpty() || managerName.getText().isEmpty() 
+                || managerGender.getText().isEmpty() 
+                || managerEmail.getText().isEmpty() || managerContact.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter all details!");
-        } else {
+        } 
+        
+        // For when if the 'Gender' field is empty
+        if (managerUsername.getText().isEmpty() || String.valueOf(managerPassword.getPassword()).isEmpty() 
+                || managerID.getText().isEmpty() || managerName.getText().isEmpty() 
+                || managerEmail.getText().isEmpty() || managerContact.getText().isEmpty()) {
+                        m.register(managerID.getText().trim(), 
+                        managerName.getText().trim(), 
+                        managerEmail.getText().trim(), 
+                        managerContact.getText().trim(), 
+                        String.valueOf(managerPassword.getPassword()), 
+                        managerUsername.getText().trim());
+        }
+        
+        else {
             // Below is code to get the text in the respective text boxes.
             // Below is code to insert the values above into the table
             m.register(managerID.getText().trim(), 
@@ -215,7 +229,7 @@ public class AddManager extends javax.swing.JFrame {
                         managerEmail.getText().trim(), 
                         managerContact.getText().trim(), 
                         managerGender.getText().trim(), 
-                        managerPassword.getText().trim(), 
+                        String.valueOf(managerPassword.getPassword()), 
                         managerUsername.getText().trim());
         }
     }//GEN-LAST:event_addManagerButtonActionPerformed
@@ -283,7 +297,7 @@ public class AddManager extends javax.swing.JFrame {
     private javax.swing.JTextField managerGender;
     private javax.swing.JTextField managerID;
     private javax.swing.JTextField managerName;
-    private javax.swing.JTextField managerPassword;
+    private javax.swing.JPasswordField managerPassword;
     private javax.swing.JTextField managerUsername;
     private javax.swing.JMenu menuBar;
     // End of variables declaration//GEN-END:variables

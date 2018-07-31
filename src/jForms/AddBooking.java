@@ -1,5 +1,6 @@
 package jForms;
 
+import Classes.Customer;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,6 +22,7 @@ import javax.swing.JOptionPane;
 public class AddBooking extends javax.swing.JFrame {
     
     private String propertyID;
+    Customer cs = new Customer();
     
     /**
      * Creates new form BookingClerkMenu
@@ -208,38 +210,37 @@ public class AddBooking extends javax.swing.JFrame {
     }//GEN-LAST:event_closeButtonActionPerformed
     
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        // Below is code to get the text in the respective text boxes.
+        String ID = customerID.getText().trim();
+        String name = customerName.getText().trim();
+        String gender = customerGender.getSelectedItem().toString();
+        String email = customerEmail.getText().trim();
+        String contactNumber = customerContact.getText().trim();
+        String property = customerProperty.getSelectedItem().toString();
+        String date = customerDate.toString();
+        
         // Check for if any of the fields are empty. All fields need to be filled.
-        if (customerID.getText().isEmpty() || customerID.getText().isEmpty() || customerEmail.getText().isEmpty() || customerContact.getText().isEmpty() || customerDate.toString().isEmpty()) {
+        if (customerID.getText().isEmpty() || customerName.getText().isEmpty()
+                || customerEmail.getText().isEmpty()
+                || customerContact.getText().isEmpty()
+                || customerGender.getSelectedItem().toString().isEmpty()
+                || customerProperty.getSelectedItem().toString().isEmpty()
+                || customerDate.toString().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter all details!");
-        } else {
-            try {
-                // Below is code to get the text in the respective text boxes.
-                String ID = customerID.getText().trim();
-                String name = customerName.getText().trim();
-                String gender = customerGender.getSelectedItem().toString();
-                String email = customerEmail.getText().trim();
-                String contactNumber = customerContact.getText().trim();
-                String property = customerProperty.getSelectedItem().toString();
-                String date = customerDate.toString();
-                
-                // Below is code to insert the values above into the table
-                Statement s = DriverManager.getConnection("jdbc:derby://localhost:1527/OOP", "ludwig", "password").createStatement();
-                
-                String sql = "INSERT INTO Customer " + "VALUES (" +
-                        ID + "," +
-                        "'" + name + "'" + "," +
-                        "'" + email + "'" + "," +
-                        "'" + contactNumber + "'" + "," +
-                        "'" + gender + "'" + "," +
-                        "'" + property + "'" + "," +
-                        "'" + date + "'" + "," +
-                        "'" + " " + "'" + ")";
-                
-                s.executeUpdate(sql); // This line of code executes the SQL query and adds in the values to the table
-                JOptionPane.showMessageDialog(null, "Successfully added new customer: " + name);
-            } catch (SQLException ex) {
-                Logger.getLogger(AddBooking.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        }
+
+        // Overloading if statement that registers based on the missing fields.
+        if (customerID.getText().isEmpty() || customerName.getText().isEmpty()
+                || customerEmail.getText().isEmpty()
+                || customerContact.getText().isEmpty()
+                || customerProperty.getSelectedItem().toString().isEmpty()
+                || customerDate.toString().isEmpty()) {
+            cs.register(ID, name, email, contactNumber, property, date);
+        }
+
+        else {
+            // Below is code to insert the values above into the table
+            cs.register(ID, name, email, contactNumber, gender, property, date, " ");
         }
     }//GEN-LAST:event_saveButtonActionPerformed
     

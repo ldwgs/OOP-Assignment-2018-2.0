@@ -52,6 +52,29 @@ public class BookingAgent extends Employee implements Serializable{
         addBooking.setVisible(true);
     }
     
+    // Overloading method (w/o Gender field)
+    public void register(String password, String username, String name, String email, String contactNumber, String ID) {
+        try {
+            // Object reference
+            Statement s = DriverManager.getConnection("jdbc:derby://localhost:1527/OOP", "ludwig", "password").createStatement();
+            
+            String sql = "INSERT INTO Clerk " + "VALUES (" +
+                    "'" + password + "'" + "," +
+                    "'" + username + "'" + "," +
+                    "'" + name + "'" + "," +
+                    "'" + "NULL" + "'" + "," + // for the missing field
+                    "'" + email + "'" + "," +
+                    "'" + contactNumber + "'" + "," +
+                    ID + ")";
+            
+            s.executeUpdate(sql); // This line of code executes the SQL query and adds in the values to the table
+            JOptionPane.showMessageDialog(null, "Successfully added new clerk: " + name);
+        } catch (SQLException ex) {
+            Logger.getLogger(BookingAgent.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    // Default method (w/ Gender field)
     public void register(String password, String username, String name, String gender, String email, String contactNumber, String ID) {
         try {
             // Object reference
@@ -63,8 +86,8 @@ public class BookingAgent extends Employee implements Serializable{
                     "'" + name + "'" + "," +
                     "'" + gender + "'" + "," +
                     "'" + email + "'" + "," +
-                    "'" + contactNumber + "'" + "," + 
-                          ID + ")";
+                    "'" + contactNumber + "'" + "," +
+                    ID + ")";
             
             s.executeUpdate(sql); // This line of code executes the SQL query and adds in the values to the table
             JOptionPane.showMessageDialog(null, "Successfully added new clerk: " + name);
